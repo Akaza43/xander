@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STOCKWISE CLASESS</title>
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -128,7 +129,7 @@
     <div class="progress-container">
       <span id="currentLesson">1/1</span>
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      <span>0%</span>
+      <span id="progressPercent">0%</span>
     </div>
   </div>
 
@@ -147,11 +148,10 @@
 
   <script>
     const lessons = [
-      { title: "STOCKWISE MASTERY", video: "https://drive.google.com/file/d/1qQclXkA46iqqiaOg82SAMjAU206kcJVq/view?usp=drive_link" },
-      { title: "STOCKWISE MASTERY", video: "https://drive.google.com/file/d/1q_Ly52xvUSiasVXClAR2-ujWoeh_HfR4/view?usp=drive_link" },
-      { title: "STOCKWISE MASTERY", video: "https://drive.google.com/file/d/1KzORptX0ybulaKwtscwqDP74hGt4rj3K/view?usp=drive_link" },
-      { title: "STOCKWISE MASTERY", video: "https://drive.google.com/file/d/1blIqXPa0dm6jfTH3EXiUCKa3wLHlDZ1E/view?usp=drive_link" },
-      { title: "ANDRY HAKIM", video: "https://drive.google.com/file/d/1Oo61tax2_NPnICaY2HttYrStzho5GUeH/view?usp=drive_link" },
+      { title: "STOCKWISE MASTERY", video: "https://drive.google.com/file/d/1-CWGAqxhGWx7aywFFcKLbMo8AYfXqb_C/view?usp=drive_link" },
+      { title: "STOCKWISE MASTERY", video: "https://drive.google.com/file/d/1gLSxIzuQat0WX2nwUrzX7Jf4_esL5LlB/view?usp=drive_link" },
+      { title: "STOCKWISE MASTERY", video: "https://drive.google.com/file/d/1so2dDcAgpT2Bv1jM1PkegSIIVt6S6yaw/view?usp=drive_link" },
+      { title: "STOCKWISE MASTERY", video: "https://drive.google.com/file/d/1rnGolH_LTUICu6bqznfVJQ9LtyE6NKII/view?usp=drive_link" },
     ];
     let currentIndex = 0;
 
@@ -164,6 +164,7 @@
       const progress = ((currentIndex + 1) / lessons.length) * 100;
       document.getElementById('progressFill').style.width = `${progress}%`;
       document.getElementById('currentLesson').textContent = `${currentIndex + 1}/${lessons.length}`;
+      document.getElementById('progressPercent').textContent = `${Math.round(progress)}%`;
     }
 
     function loadLesson(index) {
