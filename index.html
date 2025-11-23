@@ -53,7 +53,7 @@
     .lesson-section {
       flex: 40%;
       border-left: 1px solid var(--border);
-      padding: 24px;
+      padding: 24px 24px 0 24px;
       background: var(--bg-dark);
       overflow-y: auto;
       max-height: 100vh;
@@ -66,8 +66,9 @@
       position: sticky;
       top: 0;
       background: var(--bg-dark);
-      padding: 16px 0;
+      padding: 0 0 16px 0;
       z-index: 10;
+      border-bottom: 1px solid var(--border);
     }
     .lesson-header h2 { font-size: 20px; font-weight: 700; margin: 0; color: var(--text-main); }
     .next-btn {
@@ -85,7 +86,7 @@
       transition: all 0.2s;
     }
     .next-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
-    .lesson-list { display: flex; flex-direction: column; gap: 12px; }
+    .lesson-list { display: flex; flex-direction: column; gap: 12px; padding-bottom: 24px; }
     .lesson-item {
       padding: 16px;
       border-radius: 12px;
@@ -135,7 +136,7 @@
 
   <div class="lesson-section">
     <div class="lesson-header">
-      <h2>Daftar Modul (5) </h2>
+      <h2 id="moduleCount">Trade With Xander</h2>
       <button class="next-btn" onclick="nextLesson()">
         <span>Next</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -147,7 +148,7 @@
   </div>
 
   <script>
-const lessons = [
+    const lessons = [
       { title: "Live reaplay tanggal 13/11/2025", video: "https://drive.google.com/file/d/1z59T0bOQy6EziMlBlypuciy0Q9dSjOpj/view?usp=drive_link" },
       { title: "Live reaplay tanggal 07/11/2025", video: "https://drive.google.com/file/d/1bU5miaftxw9MIxq0s3-MiM5q3RGc04Ii/view?usp=drive_link" },
       { title: "Live reaplay tanggal 05/11/2025", video: "https://drive.google.com/file/d/11QEM60iSlAyVbizclskhudbkdtZvv6H2/view?usp=drive_link" },
@@ -184,7 +185,7 @@ const lessons = [
       if (id) {
         iframe.src = `https://drive.google.com/file/d/${id}/preview`;
       } else {
-        iframe.src = ""; // fallback kalau link ga valid
+        iframe.src = "";
       }
 
       document.getElementById("videoTitle").innerText = lesson.title;
@@ -206,12 +207,16 @@ const lessons = [
     }
 
     const lessonList = document.getElementById("lessonList");
+    
+    // Update jumlah modul otomatis
+    document.getElementById("moduleCount").textContent = `Daftar Modul (${lessons.length})`;
+    
     lessons.forEach((lesson, index) => {
       const div = document.createElement("div");
       div.className = "lesson-item";
       div.style.animationDelay = `${0.1 * (index + 1)}s`;
       div.innerHTML = `
-        <div class="lesson-number">DAY ${index + 1}</div>
+        <div class="lesson-number">Trade With Xander</div>
         <div class="lesson-title">${lesson.title}</div>
       `;
       div.onclick = () => loadLesson(index);
